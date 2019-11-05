@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'learning';
+  constructor(private _http: HttpClient) {
+   
+  }
+
+  intercepterFunc(){
+    this._http.get('https://jsonplaceholder.typicode.com/todos/1').subscribe(() => {
+      console.log('Http Call is success from compoennt');
+    }, (error) => {
+      console.log('Http Call is failed from component');
+    })
+
+  }
 }
